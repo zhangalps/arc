@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion app.compileSDKVersion
+
+
+
+    defaultConfig {
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.targetSdkVersion
+        versionCode app.versionCode
+        versionName app.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.android.support:appcompat-$app.android_support"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation "com.github.bumptech.glide:glide:$utils.glideVersion"
+    //retrofit
+    api "com.squareup.retrofit2:retrofit:$utils.retrofitVersion"
+    api "com.squareup.retrofit2:adapter-rxjava2:$utils.retrofitVersion"
+    api "com.squareup.okhttp3:okhttp:$utils.okhttpVersion"
+    api "com.squareup.okhttp3:logging-interceptor:$utils.okhttpVersion"
+    api "io.reactivex.rxjava2:rxandroid:$utils.rxAndroidVersion"
+    api "io.reactivex.rxjava2:rxjava:$utils.rxJavaVersion"
+    api "com.squareup.retrofit2:converter-gson:$utils.gsonVersion"
+}
