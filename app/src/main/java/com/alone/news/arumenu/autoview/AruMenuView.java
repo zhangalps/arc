@@ -1,4 +1,4 @@
-package com.example.zhanghegang.arumenu.autoview;
+package com.alone.news.arumenu.autoview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -12,7 +12,8 @@ import android.view.animation.AnimationSet;
 import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 
-import com.example.zhanghegang.arumenu.R;
+import com.alone.news.arumenu.R;
+
 
 /**
  * package : com.example.zhanghegang.arumenu.view

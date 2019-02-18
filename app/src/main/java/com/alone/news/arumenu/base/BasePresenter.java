@@ -1,7 +1,5 @@
-package com.example.zhanghegang.arumenu.base;
+package com.alone.news.arumenu.base;
 
-import com.example.zhanghegang.arumenu.entity.NewsEntity;
-import com.example.zhanghegang.arumenu.model.NewsModel;
 
 import java.util.HashMap;
 import java.util.Map;

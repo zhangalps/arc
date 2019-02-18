@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion app.compileSDKVersion
     defaultConfig {
-        applicationId "com.example.zhanghegang.arumenu"
+        applicationId "com.alone.news.arumenu"
         minSdkVersion app.minSdkVersion
         targetSdkVersion app.targetSdkVersion
         versionCode app.versionCode

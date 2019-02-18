@@ -1,4 +1,4 @@
-package com.example.zhanghegang.arumenu;
+package com.alone.news.arumenu;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

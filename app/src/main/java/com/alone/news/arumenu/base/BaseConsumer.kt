@@ -1,10 +1,10 @@
-package com.example.zhanghegang.arumenu.base
+package com.alone.news.arumenu.base
 
 import android.os.Build
 import android.support.annotation.RequiresApi
 import com.arc.news.utils.CoreApp
 import com.arc.news.utils.util.NetUtils
-import com.arc.news.utils.util.ToastUtils
+import com.alone.news.arumenu.utils.ToastUtils
 import io.reactivex.functions.Consumer
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException

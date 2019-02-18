@@ -1,19 +1,18 @@
-package com.example.zhanghegang.arumenu.presenter
+package com.alone.news.arumenu.presenter
 
 import android.annotation.SuppressLint
-import android.annotation.TargetApi
 import android.os.Build
 import android.support.annotation.RequiresApi
-import com.example.zhanghegang.arumenu.api.AppDataKey
-import com.example.zhanghegang.arumenu.base.BaseConsumer
-import com.example.zhanghegang.arumenu.base.BasePresenter
-import com.example.zhanghegang.arumenu.entity.NewsEntity
-import com.example.zhanghegang.arumenu.model.NewsModel
-import com.example.zhanghegang.arumenu.view.NewsView
+import com.alone.news.arumenu.api.AppDataKey
+import com.alone.news.arumenu.base.BaseConsumer
+import com.alone.news.arumenu.base.BasePresenter
+import com.alone.news.arumenu.entity.NewsEntity
+import com.alone.news.arumenu.model.NewsModel
+import com.alone.news.arumenu.view.NewsView
+
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import org.reactivestreams.Subscriber
 
 /**
  * package : com.example.zhanghegang.arumenu.presenter

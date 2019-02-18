@@ -1,4 +1,6 @@
-package com.example.zhanghegang.arumenu.base;
+package com.alone.news.arumenu.base;
+
+import com.alone.news.arumenu.base.BaseView;
 
 /**
  * package : com.example.zhanghegang.arumenu.base

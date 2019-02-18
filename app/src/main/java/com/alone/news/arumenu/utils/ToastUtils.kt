@@ -1,4 +1,4 @@
-package com.arc.news.utils.util
+package com.alone.news.arumenu.utils
 
 import android.content.Context
 import android.os.Handler
@@ -12,7 +12,7 @@ import android.widget.Toast
  * Date : 2019/2/18
  * Use : <类的用途>
  */
-class ToastUtils {
+open class ToastUtils {
     companion object {
         //吐司展示
         fun showToast(context: Context, text: CharSequence, longToast: Boolean) {

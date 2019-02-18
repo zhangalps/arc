@@ -1,20 +1,17 @@
-package com.example.zhanghegang.arumenu;
+package com.alone.news.arumenu;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import com.example.zhanghegang.arumenu.api.CalendarUtils;
+import com.alone.news.arumenu.utils.CalendarUtils;
+import com.alone.news.arumenu.autoview.ArcMenu;
+import com.alone.news.arumenu.autoview.AruMenuView;
+import com.alone.news.arumenu.entity.NewsEntity;
+import com.alone.news.arumenu.model.NewsModel;
+import com.alone.news.arumenu.presenter.NewsPresenter;
+import com.alone.news.arumenu.view.NewsView;
 import com.arc.news.utils.util.LogUtils;
-import com.example.zhanghegang.arumenu.autoview.ArcMenu;
-import com.example.zhanghegang.arumenu.autoview.AruMenuView;
-import com.example.zhanghegang.arumenu.entity.NewsEntity;
-import com.example.zhanghegang.arumenu.model.NewsModel;
-import com.example.zhanghegang.arumenu.presenter.NewsPresenter;
-import com.example.zhanghegang.arumenu.view.NewsView;
 import com.google.gson.Gson;
 
 import java.util.Calendar;

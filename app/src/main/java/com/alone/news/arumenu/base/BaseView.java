@@ -1,4 +1,4 @@
-package com.example.zhanghegang.arumenu.base;
+package com.alone.news.arumenu.base;
 
 /**
  * package : com.example.zhanghegang.arumenu.base

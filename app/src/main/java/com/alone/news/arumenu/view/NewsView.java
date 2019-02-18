@@ -1,7 +1,7 @@
-package com.example.zhanghegang.arumenu.view;
+package com.alone.news.arumenu.view;
 
-import com.example.zhanghegang.arumenu.base.BaseView;
-import com.example.zhanghegang.arumenu.entity.NewsEntity;
+import com.alone.news.arumenu.base.BaseView;
+import com.alone.news.arumenu.entity.NewsEntity;
 
 /**
  * package : com.example.zhanghegang.arumenu.view

@@ -1,7 +1,6 @@
-package com.example.zhanghegang.arumenu.api
-
+package com.alone.news.arumenu.api
+import com.alone.news.arumenu.entity.NewsEntity
 import com.arc.news.utils.retrofit.RetrofitUtils
-import com.example.zhanghegang.arumenu.entity.NewsEntity
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET

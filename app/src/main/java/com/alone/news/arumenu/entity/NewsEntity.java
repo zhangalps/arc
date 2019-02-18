@@ -1,4 +1,4 @@
-package com.example.zhanghegang.arumenu.entity;
+package com.alone.news.arumenu.entity;
 
 import java.io.Serializable;
 import java.util.List;
