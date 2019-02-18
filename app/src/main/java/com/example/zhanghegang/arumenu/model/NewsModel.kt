@@ -9,7 +9,7 @@ import io.reactivex.functions.Function
  * package : com.example.zhanghegang.arumenu.model
  * anthor : 张贺岗
  * Date : 2019/2/15
- * Use : <类的用途>
+ * Use : 历史上今日网络请求
  */
 class NewsModel {
     private val service: NewsService = NewsService.Creater.getNewsService()

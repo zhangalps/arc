@@ -1,8 +1,13 @@
 package com.example.zhanghegang.arumenu.presenter
 
 import android.annotation.SuppressLint
+import android.annotation.TargetApi
+import android.os.Build
+import android.support.annotation.RequiresApi
 import com.example.zhanghegang.arumenu.api.AppDataKey
+import com.example.zhanghegang.arumenu.base.BaseConsumer
 import com.example.zhanghegang.arumenu.base.BasePresenter
+import com.example.zhanghegang.arumenu.entity.NewsEntity
 import com.example.zhanghegang.arumenu.model.NewsModel
 import com.example.zhanghegang.arumenu.view.NewsView
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -22,7 +27,7 @@ class NewsPresenter(val newsModel: NewsModel) : BasePresenter<NewsView>() {
 
     override fun DetachView() {
         super.DetachView()
-        if (subscriberSimple != null && !subscriberSimple!!.isDisposed){
+        if (subscriberSimple != null && !subscriberSimple!!.isDisposed) {
             subscriberSimple!!.dispose()
         }
     }
@@ -33,12 +38,20 @@ class NewsPresenter(val newsModel: NewsModel) : BasePresenter<NewsView>() {
         subscriberSimple = newsModel.getToh(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    view.sucess(it)
-                }, {
-
-                    view.fail(it)
+                .subscribe(object : BaseConsumer<NewsEntity>() {
+                    @RequiresApi(Build.VERSION_CODES.N)
+                    override fun accept(t: NewsEntity) {
+                        super.accept(t)
+                        view.sucess(t)
+                    }
+                }, object : BaseConsumer<Throwable>() {
+                    @RequiresApi(Build.VERSION_CODES.N)
+                    override fun accept(t: Throwable) {
+                        super.accept(t)
+                        view.fail(t)
+                    }
                 })
+
 
     }
 

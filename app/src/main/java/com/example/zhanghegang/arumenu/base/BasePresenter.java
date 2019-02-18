@@ -1,5 +1,16 @@
 package com.example.zhanghegang.arumenu.base;
 
+import com.example.zhanghegang.arumenu.entity.NewsEntity;
+import com.example.zhanghegang.arumenu.model.NewsModel;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+
 /**
  * package : com.example.zhanghegang.arumenu.base
  * anthor : 张贺岗
@@ -31,6 +42,7 @@ public class BasePresenter<T extends BaseView> implements PresenterView<T>{
         if (!isAttachView()){
             throw new MvpException();
         }
+
     }
     public static class MvpException extends RuntimeException{
         public MvpException() {
