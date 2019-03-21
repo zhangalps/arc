@@ -21,7 +21,7 @@ import java.util.Locale;
  * descript:LogUtils类
  */
 public class LogUtils {
-    protected static final String TAG = "Debug";
+    private static final String TAG = "Debug";
     public static boolean isDebug = true;
     private static final String VALOG = "VALOG:";
     public static boolean isWirteLog = false;

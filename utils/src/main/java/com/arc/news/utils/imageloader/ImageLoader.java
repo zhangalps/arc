@@ -1,6 +1,7 @@
 package com.arc.news.utils.imageloader;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.arc.news.utils.CoreApp;
@@ -8,6 +9,9 @@ import com.bumptech.glide.BitmapTypeRequest;
 import com.bumptech.glide.DrawableTypeRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import java.io.File;
 
@@ -51,7 +55,19 @@ public class ImageLoader {
      */
     public void displayImage(String url, ImageView mImageView) {
         if (TextUtils.isEmpty(url) || mImageView == null) return;
-        Glide.with(CoreApp.getContext()).load(url).into(mImageView);
+        Glide.with(CoreApp.getContext()).load(url).listener(new RequestListener<String, GlideDrawable>() {
+            @Override
+            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                Log.e("GLIDE", "onException====net====="+e.getMessage()+"=="+model);
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                Log.e("GLIDE", "onResourceReady====net====="+"=="+model);
+                return false;
+            }
+        }).into(mImageView);
     }
 
     /**

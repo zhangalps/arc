@@ -18,6 +18,35 @@ import com.arc.news.utils.CoreApp;
  * descript:检查网络状态
  */
 public class NetUtils {
+    public static void main(String[] args) {
+        int a = 2;
+        int b = 5;
+        temp(a, b);
+        System.out.print("========" + a + "====" + b);
+    }
+
+    private static void temp(int a, int b) {
+        int temp;
+        temp = a;
+        a = b;
+        b = temp;
+        System.out.print("========" + a + "====" + b);
+    }
+
+    public static boolean isNetworkAvailable() {
+        ConnectivityManager manager = (ConnectivityManager) CoreApp.getContext()
+                .getApplicationContext().getSystemService(
+                        Context.CONNECTIVITY_SERVICE);
+        if (manager == null) {
+            return false;
+
+        }
+        NetworkInfo networkinfo = manager.getActiveNetworkInfo();
+        if (networkinfo == null || !networkinfo.isAvailable()) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * 检查网络是否链接
@@ -29,7 +58,7 @@ public class NetUtils {
             if (checkPermissions(Manifest.permission.INTERNET)) {
                 ConnectivityManager systemService = (ConnectivityManager) CoreApp.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo activeNetworkInfo = systemService.getActiveNetworkInfo();
-                if (null != activeNetworkInfo && activeNetworkInfo.isConnected()) {
+                if (null != activeNetworkInfo && activeNetworkInfo.isAvailable()) {
                     return true;
                 }
                 return false;

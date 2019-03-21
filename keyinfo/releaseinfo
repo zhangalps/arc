@@ -1,0 +1,36 @@
+别名: release
+创建日期: 2019-2-24
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=arc, OU=arc, O=arc, L=beijing, ST=beijing, C=cn
+发布者: CN=arc, OU=arc, O=arc, L=beijing, ST=beijing, C=cn
+序列号: 461537db
+有效期为 Sun Feb 24 23:05:12 CST 2019 至 Thu Feb 18 23:05:12 CST 2044
+证书指纹:
+         MD5:  C0:0D:01:E3:E7:EB:25:B3:CD:3E:1F:8E:82:12:33:82
+         SHA1: 92:0E:D6:B0:EB:01:A2:09:32:A9:B6:4A:50:BF:3F:0C:27:63:4E:0E
+         SHA256: F3:0B:CF:2E:94:5F:09:20:49:B5:2A:74:4B:46:7D:15:35:6F:B4:55:D6:8C:B9:AB:A3:90:99:B9:F7:B8:CB:74
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展:
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 4D BC 49 10 CD DF AF 46   B0 67 E3 D7 BA B8 C5 0A  M.I....F.g......
+0010: CC DA 18 D6                                        ....
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+
+
+Warning:
+JKS 密钥库使用专用格式。建议使用 "keytool -importkeystore -srckeystore keystory -destkeystore keystory -deststoretype pkcs12" 迁移到行业标准格式 PKCS12。

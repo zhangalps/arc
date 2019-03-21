@@ -13,6 +13,7 @@ import com.alone.news.arumenu.view.NewsView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import org.jetbrains.annotations.NotNull
 
 /**
  * package : com.example.zhanghegang.arumenu.presenter
@@ -20,7 +21,15 @@ import io.reactivex.schedulers.Schedulers
  * Date : 2019/2/15
  * Use : <类的用途>
  */
-class NewsPresenter(val newsModel: NewsModel) : BasePresenter<NewsView>() {
+
+object Test{
+    @JvmStatic
+    fun saySomething() {
+
+    }
+}
+
+class NewsPresenter(@NotNull val newsModel: NewsModel) : BasePresenter<NewsView>() {
 
     var subscriberSimple: Disposable? = null
 
