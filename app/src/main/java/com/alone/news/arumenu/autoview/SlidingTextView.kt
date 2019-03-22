@@ -4,7 +4,8 @@ import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.MotionEvent
-import android.view.MotionEvent.*
+import android.view.MotionEvent.ACTION_DOWN
+import android.view.MotionEvent.ACTION_MOVE
 import android.widget.TextView
 import com.arc.news.utils.util.LogUtils
 
@@ -31,11 +32,9 @@ class SlidingTextView @JvmOverloads constructor(
         when (action) {
             ACTION_DOWN -> {
                 clickY = event.y
-//                 clickX = this.bottom.toFloat()
                 LogUtils.e(TAG, "ClickY==$clickY")
             }
             ACTION_MOVE -> slidingMove(event.y)
-            ACTION_UP -> clickY = this.top.toFloat()
 
         }
         return true
@@ -46,7 +45,7 @@ class SlidingTextView @JvmOverloads constructor(
         super.onDraw(canvas)
         if (txBottom == 0) {
             txBottom = this.height
-            txHeight = ((this.lineHeight+ lineSpacingMultiplier) * lineCount + paddingTop * 2).toInt()
+            txHeight = ((this.lineHeight + lineSpacingMultiplier) * lineCount + paddingTop * 2).toInt()
             LogUtils.e(TAG, "txHeight==$txHeight,linecount==$lineCount,lineHeight==$lineHeight,lineSpacingExtra==$lineSpacingExtra,lineSpacingMultiplier==$lineSpacingMultiplier")
         }
         if (lineCount >= 3) {
@@ -66,9 +65,13 @@ class SlidingTextView @JvmOverloads constructor(
 
             LogUtils.e(TAG, "locationY==$locationY,slidingY===$slidingY,height===$height,Width===$width==bottom==$txBottom")
             val layoutParams = this.layoutParams
-            layoutParams.height = (height + slidingY).toInt()
+            if ((height + slidingY).toInt() <= txHeight) {
+                layoutParams.height = (height + slidingY).toInt()
+            } else {
+                layoutParams.height = txHeight
+            }
             layoutParams.width = width
-            if (layoutParams.height >= txBottom && isSliding && (layoutParams.height-20) <= txHeight) {
+            if (layoutParams.height >= txBottom && isSliding && (layoutParams.height) <= txHeight) {
                 this.layoutParams = layoutParams
             }
         }
