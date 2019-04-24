@@ -48,6 +48,7 @@ repositories {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation (name:"lib-dds-1.1.1.1-release",ext:"aar")
     implementation "com.android.support:appcompat-$app.android_support"
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -65,6 +66,7 @@ dependencies {
 
     //auto layout
     implementation "me.jessyan:autosize:$app.autosize"
+    implementation'com.android.support:design:27.1.0'
 }
 repositories {
     mavenCentral()

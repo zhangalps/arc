@@ -5,4 +5,10 @@
     <color name="colorAccent">#D81B60</color>
     <color name="cardTitleBc">#50000000</color>
     <color name="cardTitletext">#ffffff</color>
+    <color name="image_detail_bc">#ffffff</color>
+
+    <color name="activity_bg">#f9f9f9</color>
+    <color name="activity_main_bg">#f9f9f9</color>
+    <color name="bottom_normal">#000000</color>
+    <color name="bottom_select">#008577</color>
 </resources>

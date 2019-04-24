@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_left"
+        android:enabled="true"
+        android:title="@string/bottom_left"
+        android:icon="@mipmap/ic_home_selected"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_middle"
+        android:enabled="true"
+        android:title="@string/bottom_middle"
+        android:icon="@mipmap/ic_video_selected"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_right"
+        android:enabled="true"
+        android:title="@string/bottom_right"
+        android:icon="@mipmap/ic_care_selected"
+        app:showAsAction="ifRoom"
+        />
+</menu>

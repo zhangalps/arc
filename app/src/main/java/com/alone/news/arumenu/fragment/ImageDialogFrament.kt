@@ -61,8 +61,6 @@ class ImageDialogFrament : DialogFragment() {
         LogUtils.e(TAG, "show=========")
 
     }
-    var clickY : Float = 0.0F
-    var clickX : Float = 0.0F
     @SuppressLint("ClickableViewAccessibility")
     private fun initView() {
         val pic = arguments!!.get("pic") as String
@@ -71,26 +69,9 @@ class ImageDialogFrament : DialogFragment() {
         tv_detail.setText(des+"--->广告时间，欢迎使用今日头条，现在插播一条广告，茶花芬芳，你值得拥有，走过路过不要错过，拒绝我们就是拒绝物美价廉")
     }
 
-    fun slidingMove(locationY : Float){
-        LogUtils.e(TAG, "locationY==$locationY")
-        if (clickY != 0.0F) {
-            val slidingY = locationY - this.clickY
-            LogUtils.e(TAG, "slidingY==$slidingY")
-            val height = tv_detail.height
-            val width = tv_detail.width
-            val layoutParams = tv_detail.layoutParams
-            layoutParams.height = (height + slidingY).toInt()
-            layoutParams.width = width
-            tv_detail.layoutParams = layoutParams
-        }
-    }
 
-//    @OnClick(R.id.iv_detail_card)
-//    fun onClick() {
-////        if (this.showsDialog) {
-////            this.dismiss()
-////        }
-//    }
+
+
 
     override fun onDismiss(dialog: DialogInterface?) {
         super.onDismiss(dialog)
@@ -115,12 +96,6 @@ class ImageDialogFrament : DialogFragment() {
     override fun onResume() {
         super.onResume()
         LogUtils.e(TAG, "onResume=========")
-//        val mWindow = getDialog().getWindow()
-//        val mLayoutParams = mWindow.getAttributes();
-//        mLayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
-//        mLayoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
-//        mLayoutParams.gravity =Gravity.BOTTOM
-//        mWindow.setAttributes(mLayoutParams)
 
     }
 

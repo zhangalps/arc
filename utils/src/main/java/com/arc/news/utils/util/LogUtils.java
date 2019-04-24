@@ -21,6 +21,7 @@ import java.util.Locale;
  * descript:LogUtils类
  */
 public class LogUtils {
+    public static final String ALL_TAG = "ARUMENU_Log";
     private static final String TAG = "Debug";
     public static boolean isDebug = true;
     private static final String VALOG = "VALOG:";

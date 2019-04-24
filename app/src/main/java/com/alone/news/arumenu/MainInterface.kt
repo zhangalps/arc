@@ -1,11 +1,5 @@
 package com.alone.news.arumenu
 
-//import androidx.appcompat.app.AppCompatActivity
-//import androidx.fragment.app.Fragment
-//import androidx.fragment.app.FragmentManager
-//import androidx.fragment.app.FragmentPagerAdapter
-//import androidx.viewpager.widget.PagerAdapter
-//import androidx.viewpager.widget.ViewPager
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -26,6 +20,7 @@ import com.alone.news.arumenu.view.NewsView
 import com.arc.news.utils.util.LogUtils
 import com.arc.news.utils.util.NetUtils
 import com.google.gson.Gson
+import me.jessyan.autosize.AutoSizeConfig
 import me.jessyan.autosize.internal.CustomAdapt
 
 /**
@@ -69,19 +64,10 @@ class MainInterface : AppCompatActivity(), NewsView,CustomAdapt{
     @BindView(R.id.vp_card)
     lateinit var vp: ViewPager
 
-//    @OnClick(R.id.btn_dialog)
-//    fun dialog(){
-//        val bundle = Bundle()
-//        bundle.putString("des", "今日新闻")
-//        bundle.putString("pic", "http://juheimg.oss-cn-hangzhou.aliyuncs.com/toh/201003/13/E5124946812.jpg")
-//        val fragment = ImageDialogFrament()
-//        fragment.arguments = bundle
-//        fragment.show(supportFragmentManager, "dialog")
-//    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_interface)
+        AutoSizeConfig.getInstance().isExcludeFontScale = true
         ButterKnife.bind(this)
         vpData()
     }
