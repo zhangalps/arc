@@ -50,6 +50,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     }
 
     override fun viewInit(layout: LayoutInflater) {
+//        setStatusBar(true)
         disableShiftMode(bn_main)
         bn_main.setOnNavigationItemSelectedListener(this)
         bn_main.selectedItemId = R.id.action_left
@@ -63,9 +64,9 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
     private fun vpInit() {
         vp_main.addOnPageChangeListener(this)
         val leftFragment = LeftFragment()
-        val rightFragment = RightFragment()
         val middleFragment = MiddleFragment()
-        val fragmentList = arrayListOf(leftFragment, rightFragment, middleFragment)
+        val rightFragment = RightFragment()
+        val fragmentList = arrayListOf(leftFragment, middleFragment, rightFragment)
         val vpAdapter = MainViewpagerAdapter(supportFragmentManager, fragmentList)
         vp_main.adapter = vpAdapter
         vp_main.currentItem = 0

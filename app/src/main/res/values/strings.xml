@@ -3,4 +3,7 @@
     <string name="bottom_left">首页</string>
     <string name="bottom_middle">视频</string>
     <string name="bottom_right">我的</string>
+
+    <!--app主页-->
+    <string name="main_left_today">历史上的今日</string>
 </resources>

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import butterknife.ButterKnife
 
 /**
  * package : com.alone.news.arumenu.base
@@ -21,7 +22,13 @@ abstract class BaseFragment :Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        ButterKnife.bind(this,childView)
             viewInit(childView)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ButterKnife.bind(this,childView).unbind()
     }
     abstract fun viewBindId():Int
     abstract fun viewInit(view:View)

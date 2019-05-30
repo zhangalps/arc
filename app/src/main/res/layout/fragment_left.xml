@@ -2,13 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:orientation="vertical"
     android:background="@color/activity_main_bg"
     android:clipChildren="false">
+
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="left"
+        android:text="历史上的今日"
         android:textSize="18sp"
+        android:textColor="@color/bottom_select"
+        android:padding="10dp"
         />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_card"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="64dp"
+        android:clipChildren="false"
+        android:overScrollMode="never"
+        ></android.support.v4.view.ViewPager>
 </LinearLayout>
