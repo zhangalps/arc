@@ -1,8 +1,12 @@
 package com.arc.news.utils.retrofit;
 
+import com.arc.news.utils.CoreApp;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -39,12 +43,17 @@ public class RetrofitUtils {
     public Retrofit getRetrofitForLog(String baseUrl){
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        File cacheDir = new File(CoreApp.getContext().getCacheDir(), "response");
+        //缓存的最大尺寸10m
+        Cache cache = new Cache(cacheDir, 1024 * 1024 * 10);
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(httpLoggingInterceptor)
                 .addInterceptor(new HttpHeaderInterCeptor())
+                .addInterceptor(new DataCacheInterceptor())
                 .readTimeout(DEFAULT_TIME, TimeUnit.SECONDS)
                 .connectTimeout(DEFAULT_TIME, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
+                .cache(cache)
                 .build();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)

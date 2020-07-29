@@ -1,10 +1,14 @@
 
 package com.alone.news.arumenu.model
+
 import com.alone.news.arumenu.api.NewsService
 import com.alone.news.arumenu.entity.NewsEntity
-
 import io.reactivex.Observable
-import io.reactivex.functions.Function
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
+import java.util.*
 
 /**
  * package : com.example.zhanghegang.arumenu.model
@@ -21,5 +25,22 @@ class NewsModel {
     fun getToh(info : Map<String, String>): Observable<NewsEntity>{
         return service.getToh(info).map { t -> t }
     }
+
+    fun postMulti(): Observable<NewsEntity>{
+        val files: List<File> = ArrayList()
+        var parts: MutableList<MultipartBody.Part> = ArrayList()
+        if(files.isNotEmpty()) {
+            for (file: File in files) {
+                var body: RequestBody = RequestBody.create(MediaType.parse("image/jpg"), file);
+                var part: MultipartBody.Part = MultipartBody.Part.createFormData("image", file.name, body);
+                parts.add(part)
+            }
+        }else{
+            var part: MultipartBody.Part = MultipartBody.Part.createFormData("image", "");
+            parts.add(part)
+        }
+        return service.uploadFilesWithParts(parts)
+    }
+
 
 }

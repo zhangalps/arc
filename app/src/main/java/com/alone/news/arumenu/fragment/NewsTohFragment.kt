@@ -14,6 +14,7 @@ import butterknife.OnClick
 import butterknife.Unbinder
 import com.alone.news.arumenu.R
 import com.arc.news.utils.imageloader.ImageLoader
+import com.arc.news.utils.util.LogUtils
 
 /**
  * package : com.alone.news.arumenu.fragment
@@ -23,17 +24,20 @@ import com.arc.news.utils.imageloader.ImageLoader
  */
 class NewsTohFragment : Fragment() {
     val TAG = "NewsTohFragment"
+
     @BindView(R.id.iv_card)
     lateinit var iv_card: ImageView
+
     @BindView(R.id.tv_card_title)
     lateinit var tv_card_title: TextView
 
     lateinit var pic: String
     lateinit var title: String
     lateinit var des: String
+    var viewN: View? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view: View = View.inflate(context, R.layout.view_card_toh, null)
-        return view
+        viewN = View.inflate(context, R.layout.view_card_toh, null)
+        return viewN
     }
 
     var bind: Unbinder? = null
@@ -43,7 +47,12 @@ class NewsTohFragment : Fragment() {
         title = arguments!!.get("title") as String
         des = arguments!!.get("des") as String
         ImageLoader.getInstace().displayImage(pic, iv_card)
-        tv_card_title.setText(title)
+        tv_card_title.text = title
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LogUtils.d(TAG, "onResume -----")
 
     }
 
@@ -52,7 +61,9 @@ class NewsTohFragment : Fragment() {
         if (bind != null) bind!!.unbind()
         super.onDestroy()
     }
-    val fragment:ImageDialogFrament = ImageDialogFrament()
+
+    val fragment: ImageDialogFrament = ImageDialogFrament()
+
     @OnClick(R.id.iv_card)
     fun onClick() {
         val bundle = Bundle()
@@ -62,7 +73,7 @@ class NewsTohFragment : Fragment() {
 //        if (fragment == null) {
 //            fragment = ImageDialogFrament()
 //        }
-        if (!fragment .isAdded) {
+        if (!fragment.isAdded) {
             fragment.arguments = bundle
             fragment.show(fragmentManager, "dialog")
         }

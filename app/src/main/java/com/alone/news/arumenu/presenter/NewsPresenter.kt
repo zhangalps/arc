@@ -43,6 +43,22 @@ class NewsPresenter(@NotNull val newsModel: NewsModel) : BasePresenter<NewsView>
     @SuppressLint("CheckResult")
     fun getToh(month: String, day: String) {
         val map = mapOf("v" to "1.0", "month" to month, "day" to day, "key" to AppDataKey.TohKey)
+//        subscriberSimple = newsModel.postMulti()
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(object : BaseConsumer<NewsEntity>() {
+//                    @RequiresApi(Build.VERSION_CODES.N)
+//                    override fun accept(t: NewsEntity) {
+//                        super.accept(t)
+//                        view.sucess(t)
+//                    }
+//                }, object : BaseConsumer<Throwable>() {
+//                    @RequiresApi(Build.VERSION_CODES.N)
+//                    override fun accept(t: Throwable) {
+//                        super.accept(t)
+//                        view.fail(t)
+//                    }
+//                })
         subscriberSimple = newsModel.getToh(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

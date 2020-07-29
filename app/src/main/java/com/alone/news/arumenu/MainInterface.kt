@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.alone.news.arumenu.entity.NewsEntity
@@ -117,18 +120,34 @@ class MainInterface : AppCompatActivity(), NewsView,CustomAdapt{
 
     }
 
-    class NewsTohAdapter(fm: FragmentManager, val data: MutableList<NewsEntity.ResultBean>) : FragmentPagerAdapter(fm) {
+    class NewsTohAdapter(fm: FragmentManager, val data: MutableList<NewsEntity.ResultBean>) : FragmentStatePagerAdapter(fm) {
         val itemSize = 1000
-        override fun getItem(current: Int): Fragment {
+        override fun getItemPosition(`object`: Any): Int {
+            return PagerAdapter.POSITION_NONE
+        }
 
-            val resultBean = data[current % data.size]
-            val fragment = NewsTohFragment()
+        override fun instantiateItem(container: ViewGroup, position: Int): Any {
+            val resultBean = data[position % data.size]
+
+            val fragmentI= super.instantiateItem(container, position) as Fragment
             val bundle = Bundle()
-            val flag = (current % data.size + 1).toString() + "/" + data.size
+            val flag = (position % data.size + 1).toString() + "/" + data.size
             bundle.putString("title", flag + ":" + resultBean.title)
             bundle.putString("des", flag + ":" + resultBean.des)
             bundle.putString("pic", resultBean.pic)
-            fragment.arguments = bundle
+            fragmentI.arguments = bundle
+            return fragmentI
+        }
+        override fun getItem(current: Int): Fragment {
+
+//            val resultBean = data[current % data.size]
+            val fragment = NewsTohFragment()
+//            val bundle = Bundle()
+//            val flag = (current % data.size + 1).toString() + "/" + data.size
+//            bundle.putString("title", flag + ":" + resultBean.title)
+//            bundle.putString("des", flag + ":" + resultBean.des)
+//            bundle.putString("pic", resultBean.pic)
+//            fragment.arguments = bundle
             return fragment
 
         }

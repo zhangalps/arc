@@ -28,13 +28,13 @@ class SlidingTextView @JvmOverloads constructor(
     override fun onTouchEvent(event: MotionEvent?): Boolean {
 
         val action = event!!.action
-        LogUtils.e(TAG, "onTouchEvent==$action")
+        LogUtils.e(TAG, "onTouchEvent==$action == event.rawY===${event.rawY} == event.y == ${event.y}")
         when (action) {
             ACTION_DOWN -> {
-                clickY = event.y
+                clickY = event.rawY
                 LogUtils.e(TAG, "ClickY==$clickY")
             }
-            ACTION_MOVE -> slidingMove(event.y)
+            ACTION_MOVE -> slidingMove(event.rawY)
 
         }
         return true
@@ -45,8 +45,11 @@ class SlidingTextView @JvmOverloads constructor(
         super.onDraw(canvas)
         if (txBottom == 0) {
             txBottom = this.height
-            txHeight = ((this.lineHeight + lineSpacingMultiplier) * lineCount + paddingTop * 2).toInt()
-            LogUtils.e(TAG, "txHeight==$txHeight,linecount==$lineCount,lineHeight==$lineHeight,lineSpacingExtra==$lineSpacingExtra,lineSpacingMultiplier==$lineSpacingMultiplier")
+            txHeight = ((this.lineHeight + lineSpacingMultiplier + 5) * (lineCount+1) + paddingTop * 2).toInt()
+
+            LogUtils.e(TAG, "txHeight==$txHeight,linecount==$lineCount,lineHeight==$lineHeight,this.height==${this.height}," +
+                    "lineSpacingMultiplier==$lineSpacingMultiplier ,paddingTop==$paddingTop, this.topPaddingOffset: ${this.compoundPaddingTop}" +
+                    ", this.bottomPaddingOffset: ${this.compoundPaddingBottom}")
         }
         if (lineCount >= 3) {
             isSliding = true
@@ -63,17 +66,19 @@ class SlidingTextView @JvmOverloads constructor(
             val height = this.height
             val width = this.width
 
-            LogUtils.e(TAG, "locationY==$locationY,slidingY===$slidingY,height===$height,Width===$width==bottom==$txBottom")
             val layoutParams = this.layoutParams
-            if ((height + slidingY).toInt() <= txHeight) {
-                layoutParams.height = (height + slidingY).toInt()
+            val toInt = (height + slidingY).toInt()
+            if (toInt <= txHeight) {
+                layoutParams.height = toInt
             } else {
                 layoutParams.height = txHeight
             }
+            LogUtils.e(TAG, "locationY==$locationY,slidingY===$slidingY,height===$height,Width===$width==layoutParams.height==${layoutParams.height}===txHeight==$txHeight")
             layoutParams.width = width
             if (layoutParams.height >= txBottom && isSliding && (layoutParams.height) <= txHeight) {
                 this.layoutParams = layoutParams
             }
+            clickY = locationY
         }
     }
 

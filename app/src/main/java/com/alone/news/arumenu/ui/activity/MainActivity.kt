@@ -68,6 +68,7 @@ class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelect
         val rightFragment = RightFragment()
         val fragmentList = arrayListOf(leftFragment, middleFragment, rightFragment)
         val vpAdapter = MainViewpagerAdapter(supportFragmentManager, fragmentList)
+        vp_main.offscreenPageLimit = 3
         vp_main.adapter = vpAdapter
         vp_main.currentItem = 0
 
